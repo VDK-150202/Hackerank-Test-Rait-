@@ -1,0 +1,52 @@
+import java.io.*;
+        import java.util.*;
+        import java.text.*;
+        import java.math.*;
+        import java.util.regex.*;
+
+        public class Solution {
+            public static void main(String args[] ) throws Exception {
+                /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+                Scanner sc= new Scanner(System.in);
+                int n= sc.nextInt();
+                int[]arr = new int[2*n];
+                int temp;
+                for(int i=0; i<2*n; i++){
+                    arr[i]= sc.nextInt();
+                }
+                int sum=0, sum1=0;
+                for(int i=0; i<2*n; i++){
+                    for(int j=i+1; j<2*n; j++){
+                        if(arr[i]> arr[j]){
+                            temp= arr[i];
+                            arr[i]= arr[j];
+                            arr[j]= temp;
+                        }
+                    }
+                }
+                int p=-1;
+                
+                // System.out.print(sum+" ");
+                // System.out.print(sum1+" ");
+                for(int i=0; i< 2*n; i++){
+                        if(i<n){
+                            sum+=arr[i];
+                        }
+                        if(i>n && i<2*n){
+                            sum1+= arr[i];
+                        }
+                }
+                // System.out.println(" ");
+                // System.out.println(sum);
+                // System.out.println(sum1+1);
+                // System.out.println(" ");
+                if(sum != sum1+1){
+                    for(int i=0; i<2*n; i++){
+                    System.out.print(arr[i]+" ");
+                    }
+                }else System.out.print(p);
+                    
+                
+                
+            }
+        }
