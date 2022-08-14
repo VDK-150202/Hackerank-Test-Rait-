@@ -1,0 +1,58 @@
+import java.io.*;
+        import java.util.*;
+        import java.text.*;
+        import java.math.*;
+        import java.util.regex.*;
+
+        public class Solution {
+            public static int arrangeIncreasing( int arr[]){
+                int temp, n= arr.length;
+                for(int i=0; i< n; i++){
+                    for(int j=i+1; j<n; j++){
+                        if(arr[i]> arr[j]){
+                            temp= arr[i];
+                            arr[i]= arr[j];
+                            arr[j]=temp;
+                        }
+                    }
+                }
+                int count=0;
+                int i=0,k=0;
+                for(int j=1; j<n; j++){
+                    int x= arr[0];
+                    if(x == arr[j]){
+                        count++;
+                    }
+                }
+                   if(count == n-1)
+                            return 0;
+;                    
+                count=0;
+                
+                    for(int j=i+1; j<n; j++){
+                        if(arr[i]< arr[j] && k==0){
+                            count++;
+                        }else if( arr[i] == arr[j]){
+                             k=1;
+                            count++;
+                        }else{
+                            k=0;
+                        }
+                        i++;
+                    }
+               
+                return count;
+            }
+            public static void main(String args[] ) throws Exception {
+                /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+                Scanner sc= new Scanner(System.in);
+                int n= sc.nextInt();
+                int []arr= new int[n];
+                for(int i=0; i< n; i++){
+                    arr[i]= sc.nextInt();
+                }
+                
+                int R= arrangeIncreasing( arr );
+                System.out.println(R);
+            }
+        }
